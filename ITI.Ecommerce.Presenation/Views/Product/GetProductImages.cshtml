@@ -1,0 +1,29 @@
+﻿@inject IViewLocalizer localizer
+<div class="container-fluid">
+    <div class="col-12">
+        <div class="row ">
+            @foreach (var img in (List<ProductImageDto>)Model)
+            {
+
+                <div class="col-4 p-3 ms-4">
+                    @if (img == null)
+                    {
+                        <h1>No Images For This Book</h1>
+                    }
+                    else
+                    {
+
+                        <div class="card  shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                            <img src="~/Content/Images/Product/@img.Path" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Picture number @img.ID</h5>
+                                <a class="btn btn-danger" asp-controller="Product" asp-action="DeleteProductImages" asp-route-im="@img.ID" asp-route-pro="@img.ProductID">@localizer["Delete"]</a>
+                                <a class="btn btn-success" asp-controller="Product" asp-action="AddProductImages">@localizer["Add"]</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@inject IViewLocalizer localizer
+ @model List<CustomerDto> 
+
+<div class="table-responsive m-1">
+<table class="table table-dark ">
+    
+  <thead> 
+      <th>@localizer["Name"]</th>
+      @*<th>Name_English</th>*@
+        <th>@localizer["Address"]</th>
+        <th>@localizer["Email"]</th>
+     @*   <th>FullNamed</th>*@
+        <th>@localizer["Mobile Number"]</th>
+        <th>@localizer["Update"]</th>
+        <th>@localizer["Delete"]</th>
+  </thead>
+  <tbody>
+      @foreach(var itm in Model){
+    <tr class="table-active">
+    <td>@itm.FullName</td>
+      @*<td>@itm.NameEN</td>*@
+      <td>@itm.Address</td>
+      <td>@itm.Email</td>
+      @*<td>@itm.FullName</td>*@
+      <td>@itm.MobileNumber</td>
+                    <td><a class="btn text-white" style="background-color:#0d6efd" asp-controller="Customer" asp-action="UpdateUser" asp-route-ID="@itm.ID">@localizer["Update"]</a></td>
+                    <td> <a class="btn btn-danger" asp-controller="Customer" asp-action="Delete" asp-route-ID="@itm.ID">@localizer["Delete"]</a><td />
+          </td>
+
+     </tr>
+     }
+    
+  </tbody>
+</table>
+<div/>

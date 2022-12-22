@@ -1,0 +1,96 @@
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
+
+
+
+@*<html >*@
+   @* <html lang="en" dir="@(isRTL ? "RTL" : "LTR")">*@
+    <head>
+
+    <meta charset="utf-8">
+    <title>B-TECH Admain Dash Board</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+   @* Bootstrap  right to left  cdn*@
+
+    @*@if (isRTL)
+    {
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+    }*@
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/content/css/bootstrap.min.css" rel="stylesheet">
+    
+
+    <!-- Template Stylesheet -->
+        <link href="~/content/css/style.css" rel="stylesheet"/>
+
+   </head>
+    <body>
+
+      <header>
+
+       <div class="container-xxl position-relative bg-white d-flex p-0">
+
+        <!-- Sidebar -->
+        <partial   name="_SideBar"></partial>
+
+        <!-- Content Start -->
+
+        <div class="content">
+
+            <!--Header Navbar -->
+            <partial  name="_Header"></partial>
+
+                <div dir="@(isRTL ? "RTL" : "LTR")">@RenderBody()</div>
+          
+
+        </div>
+
+
+        </div>
+      
+      </header>
+
+
+        
+
+    <footer>
+
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/content/lib/chart/chart.min.js"></script>
+    <script src="~/content/lib/easing/easing.min.js"></script>
+    <script src="~/content/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/content/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/content/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="~/content/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="~/content/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/content/js/main.js"></script>
+
+    <script src="~/Contents/Content/lib/jquery/jquery.min.js"></script>
+    <script src="~/Contents/Content/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/Contents/Content/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Contents/Content/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+
+   </body>
+
+</html>
+ 

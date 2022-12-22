@@ -1,0 +1,128 @@
+﻿@using X.PagedList
+@using X.PagedList.Web.Common
+@inject IViewLocalizer localizer
+@model IPagedList<ProductDto>
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-1"></div>
+        <div class="col-10">
+            <div class="row">
+
+                <form class="align-items-center" data-ajax="true" data-ajax-loading="#loader" data-ajax-complete="BookAdd" method="post" asp-controller="Product" asp-action="Filter" enctype="multipart/form-data">
+                    
+                    <div class="row g-3">
+                        <div class="col-2">
+                            <label class="form-control" style="font-size:2vw;">@localizer["Name"]</label>
+                            <input type="text" class="form-control mt-2" name="fil" />
+                        </div>
+                        <div class="col-3"> 
+                            <label class="form-control" style="font-size:1.8vw;">@localizer["Price less than"]</label>
+                            <input type="text" class="form-control mt-2" name="price" />
+
+                        </div>
+                        <div class="col-3">
+                            <label class="form-control" style="font-size:2vw;">@localizer["Category"]</label>
+
+                            <select class="form-control mt-2" name="Cat">
+                                <option value="0">All</option>
+                                @if ((List<CategoryDto>)ViewBag.Cat != null)
+                                {
+                                    @foreach (var i in (List<CategoryDto>)ViewBag.Cat)
+                                    {
+                                        <option value="@i.ID">@i.NameEN</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-1">
+                            <input type="submit" class="btn btn-success mt-4" value="@localizer["Search"]" />
+                        </div>
+                    </div>
+                   
+                    
+                </form>
+
+            </div>
+
+            <div class="col-1"></div></>
+        </div>
+
+        <div class="container-fluid">
+
+            <div class="row p-4">
+
+                <div class="col-1"></div>
+
+                <div class="col-11 shadow-lg p-3 mb-5 rounded-3 text-bg-dark" >
+
+                    <div class="table-responsive">
+                       
+                        <table class="table table-dark">
+
+                            <thead>
+                            <th>@localizer["Name Arabic"]</th>
+                            <th>@localizer["Name English"]</th>
+                            <th>@localizer["Update"]</th>
+                            <th>@localizer["Delete"]</th>
+                            <th>@localizer["Details"]</th>
+                            <th>@localizer["Images"]</th>
+
+
+                            </thead>
+                            <tbody>
+                                @foreach (var itm in Model.ToList<ProductDto>())
+                                {
+                                    <tr class="table-active">
+                                        <td>@itm.NameAR</td>
+                                        <td>@itm.NameEN</td>
+                                         <td> <a class="btn text-white"  asp-controller="Product" asp-action="Update" asp-route-pro="@itm.ID" style="background-color:#0d6efd">@localizer["Update"]</a></td>
+                                         <td> <a class="btn btn-danger"  asp-controller="Product" asp-action="Delete" asp-route-Prod="@itm.ID">@localizer["Delete"]</a> </td>
+                                         <td> <a class="btn btn-success" asp-controller="Product" asp-action="GetProductByID" asp-route-id="@itm.ID">@localizer["Details"]</a> </td>
+                                         <td> <a class="btn btn-warning" asp-controller="Product"  asp-action="GetProductImages" asp-route-img="@itm.ID" >@localizer["Images"]</a> </td>
+                                  
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="col-12 m-2">
+                    @Html.PagedListPager(Model, pageIndex => Url.Action("GetAll", new { pageIndex  }),
+                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                    new PagedListRenderOptions()
+                    {
+                    LiElementClasses = new string[] { "page-item" },
+                    PageClasses = new string[] { "page-link" },
+
+                    MaximumPageNumbersToDisplay=5
+                    },
+
+                    new AjaxOptions()
+                    {
+                    HttpMethod ="post",
+                    UpdateTargetId="GetAll"
+                    }
+                    ))
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+    </div>
+
+    @* @Html.PagedListPager(Model, page => Url.Action("GetAll", new { page }), new PagedListRenderOptions
+    {
+
+
+    DisplayLinkToIndividualPages = true,
+    DisplayPageCountAndCurrentLocation = false,
+
+    LiElementClasses = new string[] { "page-item" },
+    PageClasses = new string[] { "page-link" },
+
+    })*@

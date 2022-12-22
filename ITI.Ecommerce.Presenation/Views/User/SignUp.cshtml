@@ -1,0 +1,51 @@
+﻿
+@model UserCreateModel
+@inject IViewLocalizer localizer
+<div class="row w-100 pt-5 pt-5 px-xl-5">
+    <h1 style="color:#0d6efd" >@localizer["Sign Up Page"]</h1>
+    <div class="card m-2  sm-col-11 xl-col-8 " style="width: 40rem;">
+        <form method="post" asp-controller="User" asp-action="SignUp" class="py-5 px-xl-5">
+    <div asp-validation-summary="ModelOnly"></div>
+  
+   
+     <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control xl-m-2" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+     <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control xl-m-2" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control xl-m-2" />
+        <span asp-validation-for="Address"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MobileNumber"></label>
+                <input asp-for="MobileNumber" class="form-control xl-m-2" />
+        <span asp-validation-for="MobileNumber"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control xl-m-2" />
+        <span asp-validation-for="Password"></span>
+    </div>
+     <div class="form-group">
+        <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control xl-m-2" />
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+   
+    <div class="form-group">
+                <select asp-for="Role" asp-items="@ViewBag .Roles" class="form-control xl-m-2">
+          </select>
+            
+    </div>
+
+            <input type="submit" value="@localizer["Save"]" class="btn  mt-3 ms-5 text-white" style="background-color:#0d6efd" />
+</form>
+</div>
+</div>

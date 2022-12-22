@@ -1,0 +1,116 @@
+﻿@model ProductModel
+@inject IViewLocalizer localizer
+<div class="container-fluid">
+ <div class="row p-4"> 
+
+     <div class="col-2"></div>
+     <div class="col-8 shadow-lg p-3 mb-5 rounded-3 text-bg-dark"  >
+<form  class="align-items-center" data-ajax="true"  data-ajax-loading="#loader" data-ajax-complete="BookAdd" method="post" asp-controller="Product" asp-action="Add" enctype="multipart/form-data" class="needs-validation">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <label asp-for="NameAR"></label>
+        <input asp-for="NameAR" class="form-control" required/>
+        <span asp-validation-for="NameAR " class="validation" ></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NameEN"></label>
+        <input asp-for="NameEN" class="form-control" required/> 
+        <span asp-validation-for="NameEN"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" required/>
+        <span asp-validation-for="Description"></span>
+    </div>
+
+   @* <div class="form-group">
+        <label asp-for="CategoryID"></label>
+        <textarea asp-for="CategoryID" class="form-control">
+         </textarea>
+        <span asp-validation-for="CategoryID"></span>
+    </div>*@
+       <div class="form-group">
+        <label asp-for="CategoryID"></label>
+        <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.Cat" required>
+        </select>
+        <span asp-validation-for="CategoryID"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity" class="form-control"required/>
+          
+        <span asp-validation-for="Quantity"></span>
+    </div>
+     <div class="form-group">
+        <label asp-for="UnitPrice"></label>
+        <input asp-for="UnitPrice" class="form-control" required/>
+         
+        <span asp-validation-for="UnitPrice"></span>
+    </div>
+
+      <div class="form-group">
+        <label asp-for="Brand"></label>
+        <input asp-for="Brand" class="form-control"required/>
+        
+        <span asp-validation-for="Brand"></span>
+    </div>
+     <div class="form-group">
+        <label asp-for="Discount"></label>
+        <input asp-for="Discount" class="form-control" class="form-check-input" required/>
+        
+        <span asp-validation-for="Discount"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Images"></label>
+        <input asp-for="Images" class="form-control" required/>
+        <span asp-validation-for="Images"></span>
+    </div>
+    
+    @* <div class="form-group">
+        <label asp-for="TotalPrice"></label>
+        <textarea asp-for="TotalPrice" class="form-control">
+         </textarea>
+        <span asp-validation-for="TotalPrice"></span>
+    </div>*@
+    
+
+ @*   <div class="form-group">
+        <label asp-for="AuthorID"></label>
+        <select asp-for="AuthorID" class="form-control" asp-items="ViewBag.Authors">
+        </select>
+        <span asp-validation-for="AuthorID"></span>
+    </div>*@
+   @* <div class="form-group">
+        <label asp-for="Images"></label>
+        <input asp-for="Images" class="form-control" />
+        <span asp-validation-for="Images"></span>
+    </div*@
+    <input type="submit" value="@localizer["Add"]" class="btn text-white  mt-2 flo" style="background-color:#0d6efd"/>
+    
+</form>
+</div>
+<div class="col-2"></div>
+</div>
+</div>
+<script><
+    
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+/script>

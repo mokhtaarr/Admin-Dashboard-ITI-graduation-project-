@@ -1,0 +1,45 @@
+﻿@inject IViewLocalizer localizer
+<form data-ajax="true" data-ajax-loading="#loader" data-ajax-complete="BookAdd" method="post" asp-controller="Product" asp-action="GetProductByCats" asp-route-id="ViewBag.Cat.ID" enctype="multipart/form-data">
+    <div class="form-group">
+
+        <label>Categories</label>
+        <select #sel class="form-control" asp-items="ViewBag.Cat">
+        </select>
+    </div>
+    <input type="submit" value="Add" class="btn btn-primary" />
+</form>
+<table class="table table-dark">
+
+    <thead>
+    <th>@localizer["Name Arabic"]</th>
+    <th>@localizer["Name English"]</th>
+    <th>@localizer["Brand"]</th>
+    <th>@localizer["Description"]</th>
+    <th>@localizer["CategoryID"]</th>
+    <th>@localizer["Quantity"]</th>
+    <th>@localizer["UnitPrice"]</th>
+    <th>@localizer["Discount"]</th>
+    <th>@localizer["TotalPrice"]<th />
+    <th>@localizer["update"]</th>
+    <th>@localizer["Delete"]</th>
+
+    </thead>
+    <tbody>
+        @foreach (var itm in Model)
+        {
+            <tr class="table-active">
+                <td>@itm.NameAR</td>
+                <td>@itm.NameEN</td>
+                <td>@itm.Brand</td>
+                <td>@itm.Description</td>
+                <td>@itm.CategoryID</td>
+                <td>@itm.Quantity</td>
+                <td>@itm.UnitPrice</td>
+                <td>@itm.Discount</td>
+                <td>@itm.TotalPrice</td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>

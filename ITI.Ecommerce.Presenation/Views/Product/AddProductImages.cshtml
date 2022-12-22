@@ -1,0 +1,27 @@
+﻿@using ITI.Ecommerce.Presenation
+@model ProductIMGDTOS
+@inject IViewLocalizer localizer
+<div class="container-fluid">
+    <div class="row p-4">
+
+        <div class="col-3 "></div>
+        <div class="xl-col-6 sm-col-9 shadow-lg p-3 mb-5 rounded-3 text-bg-dark">
+            <form data-ajax="true" data-ajax-loading="#loader" data-ajax-complete="BookAdd" method="post" asp-controller="Product" asp-action="AddProductImages" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <label asp-for="ProductID"></label>
+                    <select asp-for="ProductID" class="form-control" asp-items="ViewBag.Pro">
+                    </select>
+                    <span asp-validation-for="ProductID"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Path"></label>
+                    <input asp-for="Path" class="form-control" />
+                    <span asp-validation-for="Path"></span>
+                </div>
+                <input type="submit" value="@localizer["Add"]" class="btn m-2 text-white style=" background-color:#0d6efd"" style="background-color:#0d6efd" />
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>

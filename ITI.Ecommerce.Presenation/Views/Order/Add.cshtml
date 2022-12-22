@@ -1,0 +1,29 @@
+﻿
+@model OrderDto
+
+<h1> Add Order</h1>
+<form method="post" asp-controller="Order" asp-action="Add" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="CustomerId"></label>
+        <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.Customer"></select>
+        <span asp-validation-for="CustomerId" class="validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PaymentId"></label>
+        <select asp-for="PaymentId" class="form-control" asp-items="ViewBag.Payment"></select>
+        <span asp-validation-for="PaymentId" class="validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OrderDate"></label>
+        <input asp-for="OrderDate" class="form-control" />
+        <span asp-validation-for="OrderDate" class="validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ShoppingCartId"></label>
+        <select asp-for="ShoppingCartId" class="form-control" asp-items="ViewBag.ShoppingCart"></select>
+        <span asp-validation-for="ShoppingCartId" class="validation"></span>
+    </div>
+    
+    <input type="submit" value="Add" class="btn text-white" style="background-color:#0d6efd" />
+    
+</form>

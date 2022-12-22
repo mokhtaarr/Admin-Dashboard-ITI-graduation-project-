@@ -1,0 +1,99 @@
+﻿@model ProductDto
+@inject IViewLocalizer localizer
+<div class="container-fluid">
+    <div class="row p-4">
+
+        <div class="col-2"></div>
+        <div class="col-8 shadow-lg p-3 mb-5 rounded-3 text-bg-dark" >
+            <form data-ajax="true" data-ajax-loading="#loader" data-ajax-complete="BookAdd" method="post" asp-controller="Product" asp-action="UpdateValue" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                    <label asp-for="ID" hidden></label>
+                    <input asp-for="ID" class="form-control" hidden />
+                    <span asp-validation-for="ID" class="validation" hidden></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NameAR"></label>
+                    <input asp-for="NameAR" class="form-control" />
+                    <span asp-validation-for="NameAR " class="validation"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NameEN"></label>
+                    <textarea asp-for="NameEN" class="form-control">
+         </textarea>
+                    <span asp-validation-for="NameEN"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" class="form-control">
+         </textarea>
+                    <span asp-validation-for="Description"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryID"></label>
+                    <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.Cat">
+                    </select>
+                    <span asp-validation-for="CategoryID"></span>
+                </div>
+                @* <div class="form-group">
+                <label asp-for="CategoryID"></label>
+                <textarea asp-for="CategoryID" class="form-control">
+                </textarea>
+                <span asp-validation-for="CategoryID"></span>
+                </div>*@
+                <div class="form-group">
+                    <label asp-for="Quantity"></label>
+                    <textarea asp-for="Quantity" class="form-control">
+         </textarea>
+                    <span asp-validation-for="Quantity"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UnitPrice"></label>
+                    <textarea asp-for="UnitPrice" class="form-control">
+         </textarea>
+                    <span asp-validation-for="UnitPrice"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Brand"></label>
+                    <textarea asp-for="Brand" class="form-control">
+         </textarea>
+                    <span asp-validation-for="Brand"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Discount"></label>
+                    <textarea asp-for="Discount" class="form-control">
+         </textarea>
+                    <span asp-validation-for="Discount"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="TotalPrice"></label>
+                    <textarea asp-for="TotalPrice" class="form-control" disabled>
+         </textarea>
+                    <span asp-validation-for="TotalPrice"></span>
+                </div>
+
+
+                @* <div class="form-group">
+                <label asp-for="AuthorID"></label>
+                <select asp-for="AuthorID" class="form-control" asp-items="ViewBag.Authors">
+                </select>
+                <span asp-validation-for="AuthorID"></span>
+                </div>*@
+                @* <div class="form-group">
+                <label asp-for="productImageList"></label>
+                <input asp-for="productImageList" class="form-control" />
+                <span asp-validation-for="productImageList"></span>
+                </div>*@
+                <input type="submit" value="@localizer["Update"]" class="btn text-white m-2" style="background-color:#0d6efd" />
+                @* <div>
+                <img id="loader" src="~/Content/Images/uploadloader.gif" style="display:none;"/>
+                </div>*@
+            </form>
+        </div>
+
+        <div class="col-2"></div>
+    </div>
+</div>

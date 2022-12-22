@@ -1,0 +1,21 @@
+﻿@inject IViewLocalizer localizer
+<div>
+    <div class="card text-bg-primary mb-3 shadow-lg p-3 mb-5 bg-body rounded-3 " style="width:18rem;">
+        <img class="card-img-top rounded mx-auto d-block" src="~/Content/Images/Product/@ViewBag.path" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@Model.NameAR</h5>
+            <p class="card-text"> @Model.Description</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Quantity @Model.Quantity</li>
+            <li class="list-group-item"> Price @Model.UnitPrice</li>
+            <li class="list-group-item">Discount @Model.Discount</li>
+        </ul>
+        <div class="card-body">
+            <li class="list-group-item"> TotalPrice @Model.TotalPrice</li>
+            <li class="list-group-item">Name:@Model.NameEN</li>
+        </div>
+        <a asp-controller="Product" asp-action="GetAll" class="btn text-white " style="background-color:#0d6efd">@localizer["Go to Home"]</a>
+    </div>
+    <div />
+

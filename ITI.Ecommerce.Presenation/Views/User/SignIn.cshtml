@@ -1,0 +1,31 @@
+﻿
+@model LoginModel
+@inject IViewLocalizer localizer
+<div class="px-xl-5"> 
+<div class="row w-100 pt-5 pt-5 px-xl-5">
+    <h1 style="color:#0d6efd" >@localizer["Login Page"]</h1>
+
+    <div class="card   sm-col-10 xl-col-8 " style="width: 35rem;">
+        <form method="post" asp-action="SignIn" asp-controller="User" class="py-5 px-5">
+    <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group  my-2">
+        <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control  my-2" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+        <div class="form-group my-2">
+        <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control  my-2" />
+        <span asp-validation-for="Password"></span>
+    </div>
+            <div class="form-group m-2">
+                <input asp-for="RememberMe" />
+        <label asp-for="RememberMe"></label>
+       
+        <span asp-validation-for="RememberMe"></span>
+    </div>
+                <input class="btn text-white mt-3 ms-5" style="background-color:#0d6efd" value="@localizer["Save"]" type="submit" />
+</form>
+    </div>
+    </div>
+</div>
